@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&display=swap');
+
+/*=============== BASE ===============*/
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+    --white: #fff;
+}
+
+
+/*=============== MAIN ===============*/
+.main {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100vh;
+    font-family: 'Alegreya Sans', sans-serif;
+    background-color: black;
+}
+
+.main__img-bg {
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    width: 110%;
+    height: 110%;
+    opacity: .5;
+    background: url('../images/Avengers.jpg') center no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+/*=============== MOVE ===============*/
+
+.movie {
+    height: 100%;
+    display: flex;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 15px;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.movie__title {
+    font-size: 91px;
+    font-weight: bold;
+    color: var(--white);
+    box-shadow: 0px 0px 30px 12px #000;
+}
+
+.movie__descr {
+    margin-top: 30px;
+    font-size: 32px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(to right, rgb(100, 214, 199), rgb(207, 194, 18));
+}
+
+/*=============== FORM ===============*/
+
+.movie__form {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie__name {
+    box-shadow: 0px 0px 30px 2px rgb(122, 117, 117);
+    border-radius: 20px;
+    border: none;
+    font-size: 24px;
+    padding: 8px 10px;
+}
+
+.movie__search {
+    position: relative;
+    margin-top: 50px;
+    border: none;
+    background-color: transparent;
+    font-size: 40px;
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 10px;
+    transition: .3s ease-in-out;
+}
+
+.movie__search:hover {
+    box-shadow: 0px 0px 20px 2px rgb(155, 124, 40);
+}
+
+/*=============== TABLE ===============*/
+.table__wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    right: -100%;
+    top: 0;
+    background-image: radial-gradient(circle, #463138, #372933, #28222c, #1a1b23, #0f1318);
+    z-index: 10;
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-start;
+    transition: .3s;
+}
+
+.table {
+    font-size: 18px;
+    color: var(--white);
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.movies {
+    margin-left: 50px;
+}
+
+td {
+    padding: 5px 8px;
+}
+
+th {
+    padding: 10px;
+}
+
+
+th {
+    text-transform: uppercase;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px 1px #28222c;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #4b343c;
+    color: white;
+    background-image: linear-gradient(to right, #463138, #4b343c, #50373f, #553b43, #5a3e47);
+}
+
+tr:hover {
+    background-image: linear-gradient(to right, #463138, #4b343c, #50373f, #553b43, #5a3e47);
+}
+
+
+input {
+    text-align: center;
+}
+
+.poster {
+    width: 40px;
+    height: 60px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.resize-poster {
+    transform: scale(4) ;
+}
+
+
+.showcase {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.close {
+    font-size: 34px;
+    color: rgb(155, 124, 40);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.show-table {
+    right:0;
+}

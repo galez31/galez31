@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== jquery ===============-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <main class="main">
+        <div class="main__img-bg"></div>
+        <section class="movie">
+            <div class="container">
+                <h2 class="movie__title"><span style="color:rgb(185, 120, 23);">Movie</span> information</h2>
+                <p class="movie__descr">
+                    enter the name of the movie to get information about it
+                </p>
+                <form class="movie__form">
+                    <input class="movie__name" name="name" type="text">
+                    <button class="movie__search" id="search" type="button" name="search">search</button>
+                </form>
+
+                <div class="table__wrapper">
+                    <table class="table movies">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Movie</th>
+                                <th colspan="3">raiting</th>
+                                <th>Actors</th>
+                                <th>Poster</th>
+                            </tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Year</th>
+                                <th>Genre</th>
+                                <th>Internet Movie DB</th>
+                                <th>Rotten Tomatos</th>
+                                <th>Metacritic</th>
+                                <th>-</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="movieList"></tbody>
+                    </table>
+
+                    <div class="close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
