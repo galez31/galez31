@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat",sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(120deg,#d8dde2,#9b8e6c);
+    min-height: 100vh;
+    
+}
+p {
+    display: inline;
+    font-family: 'Teko', sans-serif;
+    font-size: 18px;
+    max-width: 150px !important;
+
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1{
+    margin-top: 50px !important;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 60px !important;
+    margin-bottom: 20px !important;
+    font-family: 'Grape Nuts', cursive !important;
+}
+ul{
+   padding-right: 20px !important;
+   padding-left: 0!important;
+}
+
+
+.container{
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+}
+
+.list{
+    margin-top: 50px;
+    margin-bottom: 60px;
+ }
+ 
+.list h3{
+     text-align: center;
+     margin-top: 30px !important;
+      border-bottom: 3px double;
+     margin-bottom: 40px !important;
+     width: 250px;
+     margin: auto ;
+     font-size: 40px;
+     font-family: 'Grape Nuts', cursive;
+ }
+
+.txtb{
+
+width: 100%;
+border: none;
+border-bottom: 4px double black;
+background: none;
+padding: 10px;
+outline: none;
+font-size: 18px;
+margin-bottom: 20px;
+
+}
+
+.move{
+      
+    color: rgb(162, 103, 139);
+    max-width: 140px !important;
+
+}
+
+.edit{
+
+    color: rgb(80, 88, 146) !important;
+    
+}
+
+.update{
+    color: rgb(12, 136, 18) !important;
+}
+
+
+
+.task li{
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 18px;
+    margin: 8px ;
+    overflow: hidden;
+    border-radius: 30px;
+    text-align: center;
+   
+}
+.task li:hover{
+    content: "";
+    border-top: #b64a2f solid 5px;
+    margin-top: 40px;
+}
+
+.task i{
+    float: right;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    
+    
+}
+
+.withe{
+    
+    min-width:70px;
+}
+
+.comp{
+    border: solid rgba(0, 0, 0, 0.14) 3px;
+    border-radius: 20px;
+    min-height: 400px;
+    flex-basis: 45% !important;
+    margin:auto;
+    margin-top: 40px !important;
+}
+
+.notcomp{
+    border: solid rgba(0, 0, 0, 0.14) 3px;
+    border-radius: 20px;
+    min-height: 400px;
+    flex-basis: 45% !important;
+    margin: auto;
+    margin-top: 40px !important;
+}
+.notcomp i.fa-xmark{
+    visibility: hidden;
+}
+
+.notcomp:hover i.fa-xmark{
+    visibility: visible;
+}
+
+
+.complet  li{ 
+    background: rgba(204, 192, 192, 0.5);
+    width: 100%;
+    padding: 18px;
+    margin: 8px ;
+    overflow: hidden;
+    border-radius: 30px;
+    text-decoration: line-through rgb(50, 52, 50) 3px;
+    text-align: center;
+    
+}
+.complet li:hover{
+    content: "";
+    border-top: #094d19ac solid 5px;
+    margin-top: 40px;
+}
+
+.comp i.fa-xmark{
+    visibility: hidden;
+}
+
+.comp:hover i.fa-xmark{
+    visibility: visible;
+}
+
+.complet i{
+    float: right;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+
+
+.fa-trash-alt{
+    color: rgba(84, 8, 8, 0.564);
+}
+.fa-check{
+    color: rgba(9, 82, 9, 0.67);
+}
+
+
+.delet_all_list{
+
+        float: right;
+        margin-left: 10px;
+        cursor: pointer;   
+    
+}
+
+.delet_all_listcomp{
+
+    
+    float: right;
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+.fa-xmark{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: rgba(155, 117, 117, 0.827);
+}
+
+#ch{
+    accent-color: rgba(155, 117, 117, 0.827);
+    height: 20px;
+    width: 20px;
+    border-radius: 40px !important;
+   
+}
+
+@import '../node_modules/flatpickr/dist/flatpickr.min.css';
+

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.11/flatpickr.min.js" integrity="sha512-fWavsQbEkZyyE0Iiwx2ElW8jj95P3X/mDdUxiLWf4EyuW/AAah+fAbUBcBBIn2pOoGn4Y2+haVPK8VQJ7jw4Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.11/flatpickr.min.css" integrity="sha512-MQXduO8IQnJVq1qmySpN87QQkiR1bZHtorbJBD0tzy7/0U9+YIC93QWHeGTEoojMVHWWNkoCp8V6OzVSYrX0oQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+    <script src="js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+  </head>
+  <body>
+
+
+    <div class="container">
+      <h1>My todo list</h1>
+      <div class="list">
+        <input type="text" class="txtb" placeholder="Add a task" id="fucos">
+        <input type="date" class="txtb date"  placeholder="Add date note"  >
+        <div class="row">
+          <div class="notcomp col-6">
+            <i class="fa-solid fa-xmark delet_all_list"></i>
+            <h3>Not Completed</h3>
+            <div class="task"></div>
+          </div>
+          <div class="comp col-6">
+            <i class="fa-solid fa-xmark delet_all_listcomp"></i>
+            <h3>Completed</h3>
+            <div class="complet"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+$(document).ready(function(){
+if (localStorage.getItem('mylist') == null || localStorage.getItem('mylistcom') == null  ){
+      var listscom = [];
+      var lists = [];
+      localStorage.setItem('mylist', JSON.stringify(lists));
+      localStorage.setItem('mylistcom', JSON.stringify(listscom));
+    }
+      $('#fucos').focus();
+
+
+      // Activate the function by pressing Enter and pushing the variables into the array //
+      $(".txtb,.pos").on("keyup", function(e) {
+        if (e.keyCode == 13 && $(".txtb").val() != "" && $("#date").val() != "") {
+          var task = $(".txtb").val()
+          var date = $(".date").val()
+          lists.push({
+            name: task,
+            Date: date
+          });
+          localStorage.setItem('mylist', JSON.stringify(lists));
+          add_rowlist(task, date)
+          $('#fucos').focus();
+        } else if (e.keyCode == 13) {
+          Swal.fire({
+             icon: 'error',
+             title: 'Oops...',
+             text: 'All fields must be filled',
+             footer: 'Something went wrong!',
+             background: 'rgba(229, 229, 229, 0.867)',
+             confirmButtonColor: ' #4f175fb4',
+        })
+        }
+      });
+
+
+
+      // A function that prints the variables it receives into a list //
+      function add_rowlist(namel, datel) {
+        var list = `
+										
+											
+															
+															<ul class="w3-animate-zoom">
+																<li>
+																	<p>${namel}</p>
+																	<p class='move'>${datel}</p>
+																	<div class="withe">
+																		<i  class="fa fa-trash-alt delet"></i>
+																		<i class="fa fa-check ch"></i>
+                                    <i class="fa-solid fa-pen-to-square edit"></i>
+																	</div>
+																</li>
+															</ul>
+										`
+        $('.task').append(list)
+        $(".txtb").val("");
+      }
+
+
+
+      // A function that prints the variables it receives into listcomp //       
+      function add_rowlistcomp(namel, datel) {
+        var listscomp = `
+												
+															
+																
+															<ul class="w3-animate-left del">
+																<li>
+																	<p>${namel}</p>
+																	<p class='move'>${datel}</p>
+                                  <input type="checkbox" id="ch">
+																</li>
+															</ul>
+															`
+        $('.complet').append(listscomp)
+        $(".txtb").val("");
+        console.log(lists)
+      }
+
+
+      // Delete the array list //
+      $('body').on('click', '.delet_all_list', function() {
+        del = $(this).next().next().children()
+        Swal.fire({
+          title: 'Are sure you want to delete the entire list?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: ' #4f175fb4',
+          cancelButtonColor: '#d33',
+          background: 'rgba(229, 229, 229, 0.867)',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+            lists = [];
+            localStorage.setItem('mylist', JSON.stringify(lists));
+            del.fadeOut(800, function() {
+              del.remove();
+            });
+          };
+        });
+      });
+
+
+      
+// Puts every parent who presses the #ch class = "check" button //
+      $('body').on('click', '#ch' , function(){
+        var that = $(this).parent().parent()
+            
+           that.toggleClass('check');
+
+      })
+
+
+     // Delete from the list and the array listcom all the elements with class = "check" ///
+      $('body').on('click', '.delet_all_listcomp', function() {
+        var th = $(this).next().next().children()
+        Swal.fire({
+          title: 'Are sure you want to delete the entire list?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: ' #4f175fb4',
+          cancelButtonColor: '#d33',
+          background: 'rgba(229, 229, 229, 0.867)',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+          
+
+            $('.check').each(function(){
+
+                  chk = $(this).index()
+                  listscom.splice(chk,1);
+
+                  $('.check').fadeOut(800, function() {
+                  $('.check').remove();
+                  });
+
+            })
+            localStorage.setItem('mylistcom', JSON.stringify(listscom));
+            
+          };
+        });
+      });
+
+    
+
+
+
+      // Deleting a note from a list array //
+      $('body').on('click', '.delet', function() {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: ' #4f175fb4',
+          cancelButtonColor: '#d33',
+          background: 'rgba(229, 229, 229, 0.867)',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+            var tr_index = $(this).parent().parent().index();
+            lists.splice(tr_index, 1)
+            var del = $(this).parent().parent().parent()
+            del.fadeOut(800, function() {
+              del.remove();
+              localStorage.setItem('mylist', JSON.stringify(lists));
+            });
+          };
+        });
+      });
+
+
+
+      // Deleting a note from a listcomp array //
+      $('body').on('click', '.delet1', function() {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: ' #4f175fb4',
+          cancelButtonColor: '#d33',
+          background: 'rgba(229, 229, 229, 0.867)',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+            var tr_index = $(this).parent().parent().index();
+            console.log(tr_index)
+            listscom.splice(tr_index, 1)
+            var del = $(this).parent().parent()
+            del.fadeOut(800, function() {
+              del.remove();
+              localStorage.setItem('mylistcom', JSON.stringify(listscom));
+            });
+          };
+        });
+      });
+
+
+      // Setting up a task completion button and pushing it to the new listcom array and saving it on the local server //
+      $('body').on('click', '.ch', function() {
+        var del2 = $(this).parent().parent().parent()
+        var namecomp = $(this).parent().prev().prev().text()
+        var datecomp = $(this).parent().prev().text()
+        var tr_index = del2.index();
+        lists.splice(tr_index, 1)
+        listscom.push({
+          name: namecomp,
+          Date: datecomp
+        });
+        localStorage.setItem('mylistcom', JSON.stringify(listscom));
+        localStorage.setItem('mylist', JSON.stringify(lists));
+        add_rowlistcomp(namecomp, datecomp);
+
+        
+        $(this).parent().parent().parent().remove()
+      });
+
+
+
+      // Pull from the local server by refreshing the page and sending the data to the threatening function //
+      var lists = JSON.parse(localStorage.getItem('mylist'));
+      $.each(lists, function(index, name1) {
+        var namel = name1.name;
+        var datel = name1.Date;
+        add_rowlist(namel, datel)
+      });
+      var listscom = JSON.parse(localStorage.getItem('mylistcom'));
+      $.each(listscom, function(index, name2) {
+        var namelcomp = name2.name;
+        var datelcomp = name2.Date;
+        add_rowlistcomp(namelcomp, datelcomp)
+      });
+    
+         
+     $('body').on('click', '.edit', function(){
+   
+
+           var name = $(this).parent().prev().prev().text()
+           var date = $(this).parent().prev().text()
+
+           $(this).parent().prev().prev().html('<input type="text" class="txtb tedit" placeholder="Add a task" id="fucos" value="'+name+'">')
+           $(this).parent().prev().html('<input type="date" class="txtb tdate"  placeholder="Add date note" >')
+           $(this).parent().append('<i class="fa-solid fa-arrow-up-from-bracket update"></i>')
+           $(this).hide()
+           console.log(date)
+    
+           $(".tdate").flatpickr({
+            enableTime: true,
+            dateFormat: "d-m-Y H:i",
+            defaultDate: [date]
+
+      });
+
+     })
+
+     $('body').on('click', '.update', function(){
+
+           var name = $('.tedit').val()
+           var date = $('.tdate').val()
+
+           $(this).parent().prev().prev().html(name)
+           $(this).parent().prev().html(date)
+            $('.edit').show()
+            $(this).hide()
+
+           console.log(date)
+
+      
+
+
+     })
+     
+
+     $(".date").flatpickr({
+        enableTime: true,
+        dateFormat: "d-m-Y H:i",
+      });
+
+
+
+
+    });
+
+    </script>
+  </body>
+</html>
