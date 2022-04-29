@@ -1,0 +1,57 @@
+table{
+    max-width: 1060px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+form{
+    text-align: center;
+  
+}
+
+img{
+    width: 50px;
+    height: 60px;
+}
+body{
+    background-image: url("img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.table-dark{
+    --bs-table-bg: rgb(230, 215, 196) !important;
+    color: rgb(73, 73, 71) !important;
+}
+
+thead , th{
+    text-align: center !important;
+    font-size: 20px;
+    
+}
+
+tbody{
+    text-align: center;
+}
+
+table{
+
+  border-width: 5px;
+  border-color: rgb(238, 225, 225) !important;  
+  border-style: outset;
+}
+
+ table td{
+    font-size: 17px !important;
+}
+.st{
+    background-color: rgba(247, 238, 233, 0.904);
+    border-radius: 25px;
+    border: solid black 3px;
+    padding: 4px 20px;
+}
+
+.btn-success{
+    background-color: rgb(136, 187, 136) !important;
+}
+
